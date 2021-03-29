@@ -1,0 +1,58 @@
+1. Write an ML function named lex : string -> (string * string) list that inputs the name of a text file. The file will contain a sequence of characters representing a (not necessarily proper) assignment statement. Your function will parse the text file character by character. The output will be a list of pairs of strings returned to the ML environment: the words read by the parser (lexemes) and their flags that identify the type of word (tokens). The following tables shows all the possible lexemes and their tokens.
+
+    Lexeme                         Token
+
+    Any combo of letters           ID
+
+    =                              EQ
+
+    +                              PL
+
+    -                              MI
+
+    *                              TI
+
+    /                              DI
+
+
+For example, if the text file is named input.txt and contains:
+
+     profit = Revenue - cost
+Then your function should work as follows:
+     - lex("input.txt");
+     val it = [("profit","ID"),("=","EQ"),("Revenue","ID"),("-","MI"),("cost","ID")] : (string * string) list
+For another example, if the text file is named input2.txt and contains:
+
+     Hello world +
+Then your function should work as follows:
+     - lex("input2.txt");
+     val it = [("Hello","ID"),("world","ID"),("+","PL")] : (string * string) list
+For another example, if your function reads any other invalid characters such as in the example:
+
+     Hello 3 world +
+Then your function should return an empty list and print the message "Compilation error."
+
+Specifications/Notes:
+The lexemes can be separated by any amount of whitespace, which you can ignore.
+The allowed characters shall be only lowercase letters, uppercase letters, and the five operation characters listed above.
+The operation characters will always be of length one. They may or may not have whitespace between them, so your analyzer  should be able to handle this. In other words, if the earlier example was:
+           profit=Revenue–cost
+       then your program should return the same result.
+It is possible the file will be blank, in which case you function should return an empty list. You may decide whether or not this should cause compilation error, i.e., it is up to you whether your function should print an error message.
+You will not know the name of the file.
+You shall use the TextIO structure to read and parse the text files character by character. No other structures or library functions are allowed with explicit permission.
+You must use the functional/recursive programming style with pattern matching where appropriate. Do not use loops, "global" variable bindings, or other procedural techniques.
+To assist in readability, break up tasks by writing helper functions when possible.
+Comment your code briefly but thoroughly.
+You may work with a partner. If you do, include in the comments a brief statement on how the work was divided and/or who was responsible for which pieces of code.
+If you use ideas/code from other sources, cite them in the comments.
+Be prepared to set an office appointment or a class appointment to do a presentation/demonstration/defense of your project, which can be a part of your project grade.
+
+To submit this project, upload your .sml file to Gradescope. If you worked with a partner, make sure both names are under your one submission. The deadline is **, ** ** 2021, at 11:59pm. Please tag your sml file with the following in comments:
+Name(s)
+Date
+Course Number and Section
+Quarter
+Project #
+The name of your file you submit should be:
+     p1.sml
